@@ -1,0 +1,202 @@
+@font-face {
+    font-family: "pizza";
+    src: url('./fonts/hotpizza.ttf');
+    }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #780216;
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),url('./images/pizza-pattern.jpg')
+    
+}
+
+.outer {
+    height: 70vh;
+    width:90vw;
+}
+
+.app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pizza-viewer {
+    width: 50%;
+    height: 70vh;
+    background-image: url('./images/table-top.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlap {
+position: relative;
+}
+
+.parent-img-responsive {
+    width:100%;
+	height:auto;
+}
+
+.img-responsive {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+}
+
+.toppings-section {
+    width: 50%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-headers {
+    width: 100%;
+    background-color: #fff;
+    font-family: "pizza";
+    padding-top: 0.5rem
+}
+
+.base-opt {
+    height: 100%;
+    background-color: #faa307;
+}
+
+form {
+    margin: 0
+}
+
+span {
+    font-weight: 700;
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.meats, .veggies, .base, .option {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid;
+    background-color: #b40421;
+    color: #EDF2F4;
+}
+
+.veggies {
+    background-color: #55a630
+}
+
+.meats {
+    background-color: #720026;
+}
+
+.base {
+    background-color: #faa307;
+}
+
+h3 {
+    height: auto;
+    vertical-align: center;
+    text-align: center;
+}
+
+.selected {
+    background-color: whitesmoke;
+    border-bottom: none;
+    border-top: 5px groove #b40421;
+    color: #2B2D42;
+}
+
+.options {
+    background-color: whitesmoke;
+    height: 100%
+}
+
+
+/* Responsive Section */
+
+@media (max-width: 1250px) {
+    h3 {
+        font-size: 22px
+    }
+}
+
+@media (max-width: 1050px) {
+    .app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pizza-viewer {
+        width: 80%;
+        height: 70vh;
+        background-image: url('./images/table-top.png');
+    }
+
+    .toppings-section {
+        width: 80%;
+        height: 50vh;
+        background-color: darkgray;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-responsive {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .img-responsive {
+        max-width: 100%;
+    }
+
+    .pizza-viewer {
+        width: 80%;
+        height: 50vh;
+        background-image: url('./images/table-top.png');
+    }
+    .toppings-section {
+        width: 80%;
+        height: 50vh;
+        background-color: darkgray;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h3 {
+        display: none;
+    }
+}
