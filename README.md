@@ -1,2 +1,15 @@
-# papa-hut
-A full stack Node.js &amp; React.js pizza ordering app for pizza lovers!
+# PapaHut
+
+A full stack, fully responsive, React.js pizza customization & ordering web application for pizza lovers!
+
+## Technologies Used
+
+- React.js
+- Node
+- Express
+- PostgreSQL
+- Multer
+- HTML5
+- CSS3
+- PM2
+- AWS S3
