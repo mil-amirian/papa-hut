@@ -8,7 +8,6 @@ A full stack, fully responsive, React.js pizza customization & ordering web appl
 - Node
 - Express
 - PostgreSQL
-- Multer
 - HTML5
 - CSS3
 - PM2
