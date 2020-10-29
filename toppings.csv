@@ -1,12 +1,12 @@
 toppingId,name,price,image,description, calories, category
 1,Grilled Chicken,299,/images/grilled-chicken.png,"Plus 20 Calories", 20, meats
-2,Mushrooms,199,/images/mushrooms.png,"Plus 5 Calories", 5, veggies
-3,Black Olives,199,/images/black-olives.png,"Plus 15 Calories", 15, veggies
-4,Green Peppers ,199,/images/green-peppers.png,"Plus 17 Calories", 17, veggies
-5,Jalapeño Peppers,199,/images/jalapeno.png,"Plus 20 Calories", 20, veggies
-6,Pineapple,199,/images/pineapple.png,"Plus 10 Calories", 10, veggies
-7,Spinach,199,/images/spinach.png,"Plus 16 Calories", 16, veggies
-8,Onions,199,/images/grilled-chicken.png,"Plus 5 Calories", 5, meats
-9,Crispy Bacon,299,/images/bacon.png,"Plus 60 Calories", 60, meats
-10,Beef,299,/images/beef.png,"Plus 50 Calories", 50, meats
-11,Pepperoni,299,/images/pepperoni.png,"Plus 60 Calories", 60, meats
+2,Mushrooms,199,/images/mushrooms.png,"Plus 5 Calories",5,"veggies"
+3,Black Olives,199,/images/black-olives.png,"Plus 15 Calories",15,"veggies"
+4,Green Peppers ,199,/images/green-peppers.png,"Plus 17 Calories",17, "veggies"
+5,Jalapeño Peppers,199,/images/jalapeno.png,"Plus 20 Calories",20,"veggies"
+6,Pineapple,199,/images/pineapple.png,"Plus 10 Calories",10,"veggies"
+7,Spinach,199,/images/spinach.png,"Plus 16 Calories",16,"veggies"
+8,Onions,199,/images/grilled-chicken.png,"Plus 5 Calories",5,"meats"
+9,Crispy Bacon,299,/images/bacon.png,"Plus 60 Calories",60,"meats"
+10,Beef,299,/images/beef.png,"Plus 50 Calories",50,"meats"
+11,Pepperoni,299,/images/pepperoni.png,"Plus 60 Calories",60,"meats"

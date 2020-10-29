@@ -4,9 +4,12 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: null,
-      isLoading: true
+      view: {
+        name: 'base',
+        toppings: {}
+      }
     };
+    this.setView = this.setView.bind(this);
   }
 
   componentDidMount() {
@@ -15,6 +18,17 @@ export default class App extends React.Component {
       .then(data => this.setState({ message: data.message || data.error }))
       .catch(err => this.setState({ message: err.message }))
       .finally(() => this.setState({ isLoading: false }));
+  }
+
+  setView(view, params) {
+    this.setState(
+      {
+        view: {
+          name: view,
+          toppings: { toppingsId: params }
+        }
+      }
+    );
   }
 
   render() {
@@ -53,7 +67,7 @@ export default class App extends React.Component {
                 <form action="submit">
                   <div className="size pt-4">
                     <div className="sizing mt-2">
-                      <h2 className="form-headers pl-2">Size</h2>
+                      <h2 className="form-headers pl-4">Size</h2>
                       <div className="choices ml-4">
                         <div className="form-check">
                           <input className="form-check-input" type="radio" name="size" id="small" value="small"/>
@@ -82,7 +96,7 @@ export default class App extends React.Component {
                       </div>
                     </div>
                     <div className="crust mt-3">
-                      <h2 className="form-headers pl-2">Crust</h2>
+                      <h2 className="form-headers pl-4">Crust</h2>
                       <div className="choices ml-4">
                         <div className="form-check">
                           <input className="form-check-input" type="radio" name="crust" id="exampleRadios2" value="regular"/>
