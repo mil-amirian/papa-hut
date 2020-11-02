@@ -1,6 +1,6 @@
 # PapaHut
 
-A full stack, fully responsive, React.js pizza customization & ordering web application for pizza lovers!
+A full stack, fully responsive, React.js pizza customization & ordering web application for pizza lovers! Inspired by a combination of Pizza Hut & Papa John's!
 
 ## Technologies Used
 
