@@ -14,6 +14,23 @@ export default class Meats extends React.Component {
 
   handleChange(e) {
     // console.log(this.state.checked);
+    if (!this.state.checked) {
+      const added = this.state.checked.concat(e.target.name);
+      this.setState({ checked: added });
+    } else {
+      for (let i = 0; i < this.state.checked.length; i++) {
+        // console.log('for loop');
+        if (e.target.name !== this.state.checked[i].name) {
+          const added = this.state.checked.concat(e.target.name);
+          this.setState({ checked: added });
+          // console.log('added');
+        } else {
+          const removed = this.state.checked.filter(checked => checked !== e.target.name);
+          this.setState({ checked: removed });
+          // console.log('removed');
+        }
+      }
+    }
     const added = this.state.checked.concat(e.target.name);
     this.setState({ checked: added });
     const removed = this.state.checked.filter(checked => checked !== e.target.name);
