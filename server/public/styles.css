@@ -71,7 +71,8 @@ position: relative;
     width: 100%;
     background-color: #fff;
     font-family: "pizza";
-    padding-top: 0.5rem
+    padding-top: 0.5rem;
+    border-radius: 25px;
 }
 
 .base-opt {
@@ -142,6 +143,10 @@ h3 {
     height: 100%
 }
 
+.meats-options {
+    color: whitesmoke;
+}
+
 
 /* Responsive Section */
 
@@ -182,6 +187,12 @@ h3 {
     .img-responsive {
         max-width: 100%;
     }
+
+    .pizza-viewer {
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        border-bottom-left-radius: 0;
+    }
 }
 
 @media (max-width: 700px) {
@@ -204,5 +215,11 @@ h3 {
 
     h3 {
         display: none;
+    }
+
+    .pizza-viewer {
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        border-bottom-left-radius: 0;
     }
 }

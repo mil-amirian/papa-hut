@@ -29,6 +29,17 @@ app.get('/api/toppings', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/meats', (req, res, next) => {
+  const sql = `
+        select *
+        from "toppings"
+        where "category" = 'meats'
+        `;
+  db.query(sql)
+    .then(result => res.json(result.rows))
+    .catch(err => next(err));
+});
+
 app.use((err, req, res, next) => {
   if (err instanceof ClientError) {
     res.status(err.status).json({ error: err.message });
