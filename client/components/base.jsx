@@ -22,11 +22,11 @@ export default class Base extends React.Component {
           </div>
           <div className="toppings-section">
             <div className="buttons">
-              <div className="base">
+              <div onClick={() => this.props.setView('base', null)} className="base">
                 <i className="fas fa-pizza-slice fa-lg mr-2"></i>
                 <h3>Base</h3>
               </div>
-              <div className="meats">
+              <div onClick={() => this.props.setView('meats', null)} className="meats">
                 <i className="fas fa-bacon fa-lg mr-2"></i>
                 <h3>Meats</h3>
               </div>
@@ -43,7 +43,7 @@ export default class Base extends React.Component {
               <div className="base-opt">
                 <form action="submit">
                   <div className="size pt-4">
-                    <div className="sizing mt-2">
+                    <div className="sizing m-2">
                       <h2 className="form-headers pl-4">Size</h2>
                       <div className="choices ml-4">
                         <div className="form-check">
@@ -72,7 +72,7 @@ export default class Base extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="crust mt-3">
+                    <div className="crust m-2">
                       <h2 className="form-headers pl-4">Crust</h2>
                       <div className="choices ml-4">
                         <div className="form-check">
