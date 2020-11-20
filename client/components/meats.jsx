@@ -13,41 +13,20 @@ export default class Meats extends React.Component {
   }
 
   handleChange(e) {
-    // console.log(this.state.checked);
-    if (!this.state.checked) {
+    if (this.state.checked.length < 1) {
       const added = this.state.checked.concat(e.target.name);
       this.setState({ checked: added });
     } else {
       for (let i = 0; i < this.state.checked.length; i++) {
-        // console.log('for loop');
-        if (e.target.name !== this.state.checked[i].name) {
-          const added = this.state.checked.concat(e.target.name);
-          this.setState({ checked: added });
-          // console.log('added');
-        } else {
+        if (e.target.name === this.state.checked[i]) {
           const removed = this.state.checked.filter(checked => checked !== e.target.name);
           this.setState({ checked: removed });
-          // console.log('removed');
+        } else {
+          const added = this.state.checked.concat(e.target.name);
+          this.setState({ checked: added });
         }
       }
     }
-    const added = this.state.checked.concat(e.target.name);
-    this.setState({ checked: added });
-    const removed = this.state.checked.filter(checked => checked !== e.target.name);
-    this.setState({ checked: removed });
-
-    // for (let i = 0; i < this.state.checked.length; i++) {
-    //   console.log('for loop');
-    //   if (e.target.name !== this.state.checked[i].name) {
-    //     const added = this.state.checked.concat(e.target.name);
-    //     this.setState({ checked: added });
-    //     console.log('added');
-    //   } else {
-    //     const removed = this.state.checked.filter(checked => checked !== e.target.name);
-    //     this.setState({ checked: removed });
-    //     console.log('removed');
-    //   }
-    // }
   }
 
   componentDidMount() {
@@ -65,19 +44,29 @@ export default class Meats extends React.Component {
   }
 
   renderPizza() {
-
+    return (
+      this.state.checked.map(topping => {
+        let imageName;
+        this.state.meats.filter(image => {
+          if (image.name === topping) {
+            imageName = image.image;
+          }
+        });
+        return (
+          <img key={this.state.meats.toppingId} src = { imageName } className = "img-responsive" />
+        );
+      }
+      ));
   }
 
   render() {
     return (
-      <div className="outer">
+      <div className="outer shadow">
         <div className="app">
           <div className="pizza-viewer">
             <div className="image-container overlap">
               <img src="images/pizza-base.png" className="parent-img-responsive" />
-              <img src="images/pepperoni.png" className="img-responsive" />
-              <img src="images/green-peppers.png" className="img-responsive" />
-              <img src="images/beef.png" className="img-responsive" />
+              <this.renderPizza />
             </div>
           </div>
           <div className="toppings-section">
@@ -86,7 +75,7 @@ export default class Meats extends React.Component {
                 <i className="fas fa-pizza-slice fa-lg mr-2"></i>
                 <h3>Base</h3>
               </div>
-              <div onClick={() => this.props.setView('meats', null)} className="meats">
+              <div onClick={() => this.props.setView('meats', null)} className="meats meats-shadow">
                 <i className="fas fa-bacon fa-lg mr-2"></i>
                 <h3>Meats</h3>
               </div>
@@ -104,7 +93,7 @@ export default class Meats extends React.Component {
                 <form action="submit">
                   <div className="size pt-4">
                     <div className="sizing m-2">
-                      <h2 className="form-headers pl-4">Size</h2>
+                      <h2 className="form-headers pl-4">Meats</h2>
                       <div className="choices ml-4">
                         <div className="form-check">
                           {this.state.meats.map(meats => {
