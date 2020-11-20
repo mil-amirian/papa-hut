@@ -111,6 +111,7 @@ span {
     justify-content: center;
     background-color: #b40421;
     color: #EDF2F4;
+    cursor: pointer;
 }
 
 .veggies {
@@ -124,6 +125,13 @@ span {
 .base {
     background-color: #faa307;
 }
+
+.base-shadow, .meats-shadow {
+    box-shadow: 0px -15px 25px -5px #ff340b, 0px -5px 25px -7px #fff203;
+}
+
+.shadow {
+    box-shadow: -5px -5px 30px 5px red, 5px 5px 30px 5px blue;}
 
 h3 {
     height: auto;

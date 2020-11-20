@@ -22,7 +22,7 @@ export default class Base extends React.Component {
           </div>
           <div className="toppings-section">
             <div className="buttons">
-              <div onClick={() => this.props.setView('base', null)} className="base">
+              <div onClick={() => this.props.setView('base', null)} className="base base-shadow">
                 <i className="fas fa-pizza-slice fa-lg mr-2"></i>
                 <h3>Base</h3>
               </div>
