@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default class Meats extends React.Component {
+export default class Veggies extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      meats: [],
+      veggies: [],
       checked: []
     };
-    this.getMeatToppings = this.getMeatToppings.bind(this);
+    this.getVeggieToppings = this.getVeggieToppings.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.renderPizza = this.renderPizza.bind(this);
   }
@@ -23,15 +23,15 @@ export default class Meats extends React.Component {
   }
 
   componentDidMount() {
-    this.getMeatToppings();
+    this.getVeggieToppings();
   }
 
-  getMeatToppings() {
-    fetch('/api/meats')
+  getVeggieToppings() {
+    fetch('/api/veggies')
       .then(res => res.json())
-      .then(meats => {
+      .then(veggies => {
         this.setState(state => ({
-          meats: meats
+          veggies: veggies
         }));
       });
   }
@@ -40,13 +40,13 @@ export default class Meats extends React.Component {
     return (
       this.state.checked.map(topping => {
         let imageName;
-        this.state.meats.filter(image => {
+        this.state.veggies.filter(image => {
           if (image.name === topping) {
             imageName = image.image;
           }
         });
         return (
-          <img key={this.state.meats.toppingId} src = { imageName } className = "img-responsive" />
+          <img key={this.state.veggies.toppingId} src = { imageName } className = "img-responsive" />
         );
       }
       ));
@@ -68,11 +68,11 @@ export default class Meats extends React.Component {
                 <i className="fas fa-pizza-slice fa-lg mr-2"></i>
                 <h3>Base</h3>
               </div>
-              <div onClick={() => this.props.setView('meats', null)} className="meats shadows">
+              <div onClick={() => this.props.setView('meats', null)} className="meats">
                 <i className="fas fa-bacon fa-lg mr-2"></i>
                 <h3>Meats</h3>
               </div>
-              <div className="veggies" onClick={() => this.props.setView('veggies', null)}>
+              <div className="veggies shadows" onClick={() => this.props.setView('veggies', null)}>
                 <i className="fas fa-leaf fa-lg mr-2"></i>
                 <h3>Veggies</h3>
               </div>
@@ -82,19 +82,19 @@ export default class Meats extends React.Component {
               </div> */}
             </div>
             <div className="options">
-              <div className="meats-opt">
+              <div className="veggies-opt">
                 <form action="submit">
                   <div className="size pt-4">
                     <div className="sizing m-2">
-                      <h2 className="form-headers pl-4">Meats</h2>
+                      <h2 className="form-headers pl-4">Veggies</h2>
                       <div className="choices ml-4">
                         <div className="form-check">
-                          {this.state.meats.map(meats => {
+                          {this.state.veggies.map(veggie => {
                             return (
-                              <div key={meats.toppingId}>
-                                <input className="form-check-input" type="checkbox" name={meats.name} id={meats.toppingId} value={meats.price} onChange={this.handleChange}/>
-                                <label className="form-check-label meats-options" htmlFor={meats.name}>
-                                  <span>{meats.name}</span> ({meats.description})
+                              <div key={veggie.toppingId}>
+                                <input className="form-check-input" type="checkbox" name={veggie.name} id={veggie.toppingId} value={veggie.price} onChange={this.handleChange}/>
+                                <label className="form-check-label meats-options" htmlFor={veggie.name}>
+                                  <span>{veggie.name}</span> ({veggie.description})
                                 </label>
                               </div>
                             );

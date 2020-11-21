@@ -1,6 +1,7 @@
 import React from 'react';
 import Base from './base';
 import Meats from './meats';
+import Veggies from './veggies';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -41,6 +42,10 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'meats') {
       return (
         <Meats setView={this.setView}/>
+      );
+    } else if (this.state.view.name === 'veggies') {
+      return (
+        <Veggies setView={this.setView}/>
       );
     }
 
