@@ -14,7 +14,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #780216;
     background:linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),url('./images/pizza-pattern.jpg')
     
 }
@@ -117,7 +116,10 @@ span {
     background-color: #b40421;
     color: #EDF2F4;
     cursor: pointer;
+}
 
+.app, .base {
+    height: fit-content;
 }
 
 .veggies {
@@ -130,6 +132,7 @@ span {
 
 .base {
     background-color: #faa307;
+    height: 100%;
 }
 
 .shadows {
@@ -178,7 +181,7 @@ h3 {
 
     .pizza-viewer {
         width: 80%;
-        height: 70vh;
+        height: fit-content;
         background-image: url('./images/table-top.png');
     }
 
@@ -213,16 +216,23 @@ h3 {
     }
 
     .pizza-viewer {
-        width: 80%;
+        width: 97%;
         height: 50vh;
         background-image: url('./images/table-top.png');
     }
     .toppings-section {
-        width: 80%;
-        height: 50vh;
-        background-color: darkgray;
+        width: 97%;
+        height: 80vh;
         display: flex;
         flex-direction: column;
+    }
+
+    .topping-items {
+        font-size: 12px;
+    }
+
+    .base {
+        height: 100%;
     }
 
     h3 {

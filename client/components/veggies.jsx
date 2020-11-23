@@ -88,7 +88,7 @@ export default class Veggies extends React.Component {
                     <div className="sizing m-2">
                       <h2 className="form-headers pl-4">Veggies</h2>
                       <div className="choices ml-4">
-                        <div className="form-check">
+                        <div className="form-check topping-items">
                           {this.state.veggies.map(veggie => {
                             return (
                               <div key={veggie.toppingId}>

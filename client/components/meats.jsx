@@ -13,13 +13,13 @@ export default class Meats extends React.Component {
   }
 
   handleChange(e) {
+
     if (e.target.checked) {
-      const added = this.state.checked.concat(e.target.name);
-      this.setState({ checked: added });
+      this.props.pizzaMeats({ name: e.target.name, image: e.target.getAttribute('image'), toppingId: e.target.id }, 'add');
     } else {
-      const removed = this.state.checked.filter(checked => checked !== e.target.name);
-      this.setState({ checked: removed });
+      this.props.pizzaMeats({ name: e.target.name, image: e.target.getAttribute('image'), toppingId: e.target.id }, 'remove');
     }
+
   }
 
   componentDidMount() {
@@ -38,78 +38,68 @@ export default class Meats extends React.Component {
 
   renderPizza() {
     return (
-      this.state.checked.map(topping => {
-        let imageName;
-        this.state.meats.filter(image => {
-          if (image.name === topping) {
-            imageName = image.image;
-          }
-        });
-        return (
-          <img key={this.state.meats.toppingId} src = { imageName } className = "img-responsive" />
-        );
-      }
-      ));
+      this.props.renderPizza()
+    );
   }
 
   render() {
-    return (
-      <div className="outer shadow">
-        <div className="app">
-          <div className="pizza-viewer">
-            <div className="image-container overlap">
-              <img src="images/pizza-base.png" className="parent-img-responsive" />
-              <this.renderPizza />
-            </div>
-          </div>
-          <div className="toppings-section">
-            <div className="buttons">
-              <div onClick={() => this.props.setView('base', null)} className="base">
-                <i className="fas fa-pizza-slice fa-lg mr-2"></i>
-                <h3>Base</h3>
+    if (this.state.checked.length < 1) {
+      return (
+        <div className="outer shadow">
+          <div className="app">
+            <this.renderPizza />
+            <div className="toppings-section">
+              <div className="buttons">
+                <div onClick={() => this.props.setView('base', null)} className="base">
+                  <i className="fas fa-pizza-slice fa-lg mr-2"></i>
+                  <h3>Base</h3>
+                </div>
+                <div onClick={() => this.props.setView('meats', null)} className="meats shadows">
+                  <i className="fas fa-bacon fa-lg mr-2"></i>
+                  <h3>Meats</h3>
+                </div>
+                <div className="veggies" onClick={() => this.props.setView('veggies', null)}>
+                  <i className="fas fa-leaf fa-lg mr-2"></i>
+                  <h3>Veggies</h3>
+                </div>
+                {/* <div className="option">
+                  <i className="fas fa-fire-alt fa-lg mr-2"></i>
+                  <h3>Options</h3>
+                </div> */}
               </div>
-              <div onClick={() => this.props.setView('meats', null)} className="meats shadows">
-                <i className="fas fa-bacon fa-lg mr-2"></i>
-                <h3>Meats</h3>
-              </div>
-              <div className="veggies" onClick={() => this.props.setView('veggies', null)}>
-                <i className="fas fa-leaf fa-lg mr-2"></i>
-                <h3>Veggies</h3>
-              </div>
-              {/* <div className="option">
-                <i className="fas fa-fire-alt fa-lg mr-2"></i>
-                <h3>Options</h3>
-              </div> */}
-            </div>
-            <div className="options">
-              <div className="meats-opt">
-                <form action="submit">
-                  <div className="size pt-4">
-                    <div className="sizing m-2">
-                      <h2 className="form-headers pl-4">Meats</h2>
-                      <div className="choices ml-4">
-                        <div className="form-check">
-                          {this.state.meats.map(meats => {
-                            return (
-                              <div key={meats.toppingId}>
-                                <input className="form-check-input" type="checkbox" name={meats.name} id={meats.toppingId} value={meats.price} onChange={this.handleChange}/>
-                                <label className="form-check-label meats-options" htmlFor={meats.name}>
-                                  <span>{meats.name}</span> ({meats.description})
-                                </label>
-                              </div>
-                            );
-                          })}
+              <div className="options">
+                <div className="meats-opt">
+                  <form action="submit">
+                    <div className="size pt-4">
+                      <div className="sizing m-2">
+                        <h2 className="form-headers pl-4">Meats</h2>
+                        <div className="choices ml-4">
+                          <div className="form-check topping-items">
+                            {this.state.meats.map(meats => {
+                              return (
+                                <div key={meats.toppingId}>
+                                  <input className="form-check-input" type="checkbox" name={meats.name} id={meats.toppingId} value={meats.price} onChange={this.handleChange} image={meats.image}/>
+                                  <label className="form-check-label meats-options" htmlFor={meats.name}>
+                                    <span>{meats.name}</span> ({meats.description})
+                                  </label>
+                                </div>
+                              );
+                            })}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
-      </div>
-    );
+      );
+    } else {
+      return {
+
+      };
+    }
   }
 }
