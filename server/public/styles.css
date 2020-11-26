@@ -162,6 +162,11 @@ h3 {
     color: whitesmoke;
 }
 
+.price {
+    color: white;
+    font-style: italic;
+}
+
 
 /* Responsive Section */
 
