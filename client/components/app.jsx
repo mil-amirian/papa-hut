@@ -19,6 +19,7 @@ export default class App extends React.Component {
     this.renderPizza = this.renderPizza.bind(this);
     this.pizzaBase = this.pizzaBase.bind(this);
     this.pizzaMeats = this.pizzaMeats.bind(this);
+    this.passMeats = this.passMeats.bind(this);
   }
 
   componentDidMount() {
@@ -63,6 +64,12 @@ export default class App extends React.Component {
     }
   }
 
+  passMeats() {
+    if (this.state.meats.length > 0) {
+      return this.state.meats;
+    }
+  }
+
   pizzaMeats(meats, action) {
     if (action === 'add') {
       const added = this.state.meats.concat(meats);
@@ -92,7 +99,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'meats') {
       return (
-        <Meats setView={this.setView} renderPizza={this.renderPizza} pizzaMeats={ this.pizzaMeats}/>
+        <Meats setView={this.setView} renderPizza={this.renderPizza} pizzaMeats={this.pizzaMeats} passMeats={ this.passMeats }/>
       );
     } else if (this.state.view.name === 'veggies') {
       return (
