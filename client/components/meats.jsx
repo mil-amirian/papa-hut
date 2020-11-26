@@ -67,7 +67,6 @@ export default class Meats extends React.Component {
   }
 
   render() {
-
     return (
       <div className="outer shadow">
         <div className="app">
@@ -106,6 +105,7 @@ export default class Meats extends React.Component {
                                 <label className="form-check-label meats-options" htmlFor={meats.name}>
                                   <span>{meats.name}</span> ({meats.description})
                                 </label>
+                                <p className="price">+${(meats.price / 100).toFixed(2)}</p>
                               </div>
                             );
                           })}
