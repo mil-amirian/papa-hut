@@ -10,6 +10,12 @@ export default class App extends React.Component {
       view: {
         name: 'base'
       },
+      price: {
+        small: 799,
+        medium: 999,
+        large: 1299,
+        'extra-large': 1499
+      },
       size: null,
       crust: null,
       meats: [],
@@ -18,6 +24,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.renderPizza = this.renderPizza.bind(this);
     this.pizzaBase = this.pizzaBase.bind(this);
+    this.pizzaCrust = this.pizzaCrust.bind(this);
     this.pizzaMeats = this.pizzaMeats.bind(this);
     this.passMeats = this.passMeats.bind(this);
   }
@@ -64,10 +71,18 @@ export default class App extends React.Component {
     }
   }
 
-  passMeats() {
-    if (this.state.meats.length > 0) {
-      return this.state.meats;
-    }
+  pizzaBase(size) {
+    this.setState(
+      {
+        size: size
+      });
+  }
+
+  pizzaCrust(crust) {
+    this.setState(
+      {
+        crust: crust
+      });
   }
 
   pizzaMeats(meats, action) {
@@ -84,18 +99,16 @@ export default class App extends React.Component {
     }
   }
 
-  pizzaBase(size, crust) {
-    this.setState(
-      {
-        size: size,
-        crust: crust
-      });
+  passMeats() {
+    if (this.state.meats.length > 0) {
+      return this.state.meats;
+    }
   }
 
   render() {
     if (this.state.view.name === 'base') {
       return (
-        <Base setView={this.setView} renderPizza={this.renderPizza} pizzaBase={ this.pizzaBase }/>
+        <Base setView={this.setView} renderPizza={this.renderPizza} pizzaBase={this.pizzaBase} pizzaCrust={ this.pizzaCrust}/>
       );
     } else if (this.state.view.name === 'meats') {
       return (
