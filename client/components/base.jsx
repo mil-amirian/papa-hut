@@ -4,29 +4,15 @@ export default class Base extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      size: null,
-      crust: null
+
     };
     this.pizza = this.pizza.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   pizza() {
     return (
       this.props.renderPizza()
     );
-  }
-
-  handleChange(e) {
-    if (e.target.name === 'size') {
-      this.setState({
-        size: e.target.value
-      });
-    } else if (e.target.name === 'crust') {
-      this.setState({
-        crust: e.target.value
-      });
-    }
   }
 
   render() {
