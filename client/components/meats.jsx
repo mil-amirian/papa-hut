@@ -95,7 +95,7 @@ export default class Meats extends React.Component {
                 <form action="submit">
                   <div className="size pt-4">
                     <div className="sizing m-2">
-                      <h2 className="form-headers pl-4">Meats</h2>
+                      <h2 className="form-headers pl-4">3. Choose Your Meats</h2>
                       <div className="choices ml-4">
                         <div className="form-check topping-items">
                           {this.state.meats.map(meats => {
