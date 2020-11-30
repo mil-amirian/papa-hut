@@ -15,7 +15,56 @@ body {
     justify-content: center;
     align-items: center;
     background:linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),url('./images/pizza-pattern.jpg')
-    
+}
+
+.header-container {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);    backdrop-filter: blur(2px);
+    box-shadow: 0px 0px 22px 0px rgba(255,255,255,0.69);
+    border: solid 4px rgb(255, 183, 83);
+    margin-bottom: 1rem;
+    border-radius: 25px;
+}
+
+.spacer {
+    width: 20%;
+}
+
+.site-title {
+    font-family: 'pizza';
+    color: white;
+    padding: 0;
+    margin: 0;
+    font-size: 50px;
+    text-shadow: 
+        2px 2px 0px #eb452b, 
+        3px 3px 0px #efa032, 
+        4px 4px 0px #46b59b, 
+        5px 5px 0px #017e7f, 
+        6px 6px 0px #052939, 
+        7px 7px 0px #c11a2b
+}
+
+.subtotal-container {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    color: black;
+    font-size: 24px
+}
+
+.icon {
+    margin-right: 0.5rem
+}
+
+.top-price {
+    margin-right: 0.5rem
 }
 
 .outer {
@@ -77,6 +126,7 @@ position: relative;
 .base-opt {
     height: 100%;
     background-color: #faa307;
+    border-bottom-right-radius: 25px;
 }
 
 .meats-opt {
@@ -123,7 +173,8 @@ span {
 }
 
 .veggies {
-    background-color: #55a630
+    background-color: #55a630;
+    border-top-right-radius: 25px;
 }
 
 .meats {
@@ -154,7 +205,6 @@ h3 {
 }
 
 .options {
-    background-color: whitesmoke;
     height: 100%
 }
 
@@ -168,6 +218,11 @@ h3 {
     font-size: 12px;
 }
 
+.price-black {
+    font-style: italic;
+    font-size: 12px;
+}
+
 
 /* Responsive Section */
 
@@ -177,7 +232,16 @@ h3 {
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1000px) {
+    .spacer {
+        display: none;
+    }
+    
+    .site-title {
+        font-size: 40px;
+        margin-left: 1rem;
+    }
+
     .app {
         display: flex;
         flex-direction: column;
@@ -218,9 +282,36 @@ h3 {
     h3 {
         margin-bottom: 0;
     }
+
+    .veggies {
+        border-top-right-radius: 0px;
+    }
+
+    .buttons {
+        height: fit-content;
+    }
+
+    .meats, .veggies, .base, .option {
+        height: 50px
+    }
 }
 
 @media (max-width: 700px) {
+    .spacer {
+        display: none;
+    }
+    
+    .site-title {
+        font-size: 24px;
+        margin-left: 1rem;
+    }
+
+    .subtotal-container {
+        font-size: 16px;
+        margin-right: 0    
+    }
+
+
     .img-responsive {
         max-width: 100%;
     }
@@ -232,7 +323,7 @@ h3 {
     }
     .toppings-section {
         width: 97%;
-        height: 80vh;
+        height: 50vh;
         display: flex;
         flex-direction: column;
     }
@@ -243,6 +334,18 @@ h3 {
 
     .base {
         height: 100%;
+    }
+
+    .options {
+        height: fit-content;
+        margin-bottom: 10px;
+    }
+
+    .base-opt {
+        height: fit-content;
+        padding-bottom: 10px;
+        margin-bottom: 2rem;
+        border-bottom-left-radius: 25px;
     }
 
     h3 {

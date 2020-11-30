@@ -7,6 +7,7 @@ export default class Base extends React.Component {
 
     };
     this.pizza = this.pizza.bind(this);
+    this.price = this.price.bind(this);
   }
 
   pizza() {
@@ -15,7 +16,14 @@ export default class Base extends React.Component {
     );
   }
 
+  price() {
+    const pricing = this.props.basePrice();
+    return pricing;
+
+  }
+
   render() {
+    const price = this.price();
     return (
       <div className="outer">
         <div className="app">
@@ -44,54 +52,61 @@ export default class Base extends React.Component {
                 <form action="submit">
                   <div className="size pt-4">
                     <div className="sizing m-2">
-                      <h2 className="form-headers pl-4">Size</h2>
+                      <h2 className="form-headers pl-4">1. Choose Your Size</h2>
                       <div className="choices ml-4">
                         <div className="form-check topping-items">
                           <input className="form-check-input" type="radio" name="size" id="small" value="small" onChange={() => { this.props.pizzaBase(event.target.value); }} />
                           <label className="form-check-label" htmlFor="small">
                             <span>Small</span> (6 slices)
                           </label>
+                          <p className="price-black">from ${ (price.small / 100).toFixed(2) }</p>
                         </div>
                         <div className="form-check topping-items">
                           <input className="form-check-input" type="radio" name="size" id="medium" value="medium" onChange={() => { this.props.pizzaBase(event.target.value); }} />
                           <label className="form-check-label" htmlFor="medium">
                             <span>Medium</span> (8 slices)
                           </label>
+                          <p className="price-black">from ${ (price.medium / 100).toFixed(2) }</p>
                         </div>
                         <div className="form-check topping-items">
                           <input className="form-check-input" type="radio" name="size" id="large" value="large" onChange={() => { this.props.pizzaBase(event.target.value); }}/>
                           <label className="form-check-label" htmlFor="large">
                             <span>Large</span> (10 slices)
                           </label>
+                          <p className="price-black">from ${ (price.large / 100).toFixed(2) }</p>
                         </div>
                         <div className="form-check topping-items">
                           <input className="form-check-input" type="radio" name="size" id="extra-large" value="extra-large" onChange={() => { this.props.pizzaBase(event.target.value); }} />
                           <label className="form-check-label" htmlFor="extra-large">
                             <span>Extra-Large</span> (14 slices)
                           </label>
+                          <p className="price-black">from ${ (price['extra-large'] / 100).toFixed(2) }</p>
                         </div>
                       </div>
                     </div>
                     <div className="crust m-2">
-                      <h2 className="form-headers pl-4">Crust</h2>
+                      <h2 className="form-headers pl-4">2. Choose Your Crust</h2>
                       <div className="choices ml-4">
                         <div className="form-check topping-items">
                           <input className="form-check-input" type="radio" name="crust" id="exampleRadios2" value="regular" onChange={() => { this.props.pizzaCrust(event.target.value); }} />
                           <label className="form-check-label" htmlFor="regular">
                             <span>Regular</span>
                           </label>
+                          <p className="price-black">${ (price.regular / 100).toFixed(2) }</p>
                         </div>
                         <div className="form-check topping-items">
-                          <input className="form-check-input" type="radio" name="crust" id="exampleRadios3" value="thin" onChange={() => { this.props.pizzaCrust(event.target.value); }} />
+                          <input className="form-check-input" type="radio" name="crust" id="exampleRadios3" value="thin-italian" onChange={() => { this.props.pizzaCrust(event.target.value); }} />
                           <label className="form-check-label" htmlFor="thin">
-                            <span>Thin Italian</span> (+$1.50)
+                            <span>Thin Italian</span>
                           </label>
+                          <p className="price-black">+${ (price['thin-italian'] / 100).toFixed(2) }</p>
                         </div>
                         <div className="form-check topping-items">
-                          <input className="form-check-input" type="radio" name="crust" id="exampleRadios3" value="deep" onChange={() => { this.props.pizzaCrust(event.target.value); }}/>
+                          <input className="form-check-input" type="radio" name="crust" id="exampleRadios3" value="deep-pan" onChange={() => { this.props.pizzaCrust(event.target.value); }}/>
                           <label className="form-check-label" htmlFor="deep">
-                            <span>Deep Pan</span> (+$2.50)
+                            <span>Deep Pan</span>
                           </label>
+                          <p className="price-black">+${ (price['deep-pan'] / 100).toFixed(2) }</p>
                         </div>
                       </div>
                     </div>

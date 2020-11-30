@@ -2,6 +2,7 @@ import React from 'react';
 import Base from './base';
 import Meats from './meats';
 import Veggies from './veggies';
+import Header from './header';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,12 +15,16 @@ export default class App extends React.Component {
         small: 799,
         medium: 999,
         large: 1299,
-        'extra-large': 1499
+        'extra-large': 1499,
+        regular: 0,
+        'thin-italian': 150,
+        'deep-pan': 250
       },
       size: null,
-      crust: null,
+      crust: 'regular',
       meats: [],
-      veggies: []
+      veggies: [],
+      totalPrice: 0.00
     };
     this.setView = this.setView.bind(this);
     this.renderPizza = this.renderPizza.bind(this);
@@ -27,10 +32,12 @@ export default class App extends React.Component {
     this.pizzaCrust = this.pizzaCrust.bind(this);
     this.pizzaMeats = this.pizzaMeats.bind(this);
     this.passMeats = this.passMeats.bind(this);
+    this.basePrice = this.basePrice.bind(this);
+    this.calculatePizzaPrice = this.calculatePizzaPrice.bind(this);
   }
 
-  componentDidMount() {
-
+  basePrice() {
+    return this.state.price;
   }
 
   setView(view, params) {
@@ -41,6 +48,25 @@ export default class App extends React.Component {
         }
       }
     );
+  }
+
+  calculatePizzaPrice() {
+    if (this.state.size) {
+      let totalPrice = 0;
+      const size = this.state.size;
+      const crust = this.state.crust;
+      const sizePrice = this.state.price[size];
+      const crustPrice = this.state.price[crust];
+      totalPrice += (sizePrice + crustPrice);
+      for (let i = 0; i < this.state.meats.length; i++) {
+        totalPrice += this.state.meats[i].price;
+      }
+
+      for (let i = 0; i < this.state.veggies.length; i++) {
+        totalPrice += this.state.veggies[i].price;
+      }
+      return totalPrice;
+    }
   }
 
   renderPizza() {
@@ -108,15 +134,24 @@ export default class App extends React.Component {
   render() {
     if (this.state.view.name === 'base') {
       return (
-        <Base setView={this.setView} renderPizza={this.renderPizza} pizzaBase={this.pizzaBase} pizzaCrust={ this.pizzaCrust}/>
+        <>
+          <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
+          <Base setView={this.setView} renderPizza={this.renderPizza} pizzaBase={this.pizzaBase} pizzaCrust={this.pizzaCrust} basePrice={this.basePrice} />
+        </>
       );
     } else if (this.state.view.name === 'meats') {
       return (
-        <Meats setView={this.setView} renderPizza={this.renderPizza} pizzaMeats={this.pizzaMeats} passMeats={ this.passMeats }/>
+        <>
+          <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
+          <Meats setView={this.setView} renderPizza={this.renderPizza} pizzaMeats={this.pizzaMeats} passMeats={this.passMeats} />
+        </>
       );
     } else if (this.state.view.name === 'veggies') {
       return (
-        <Veggies setView={this.setView}/>
+        <>
+          <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
+          <Veggies setView={this.setView} />
+        </>
       );
     }
 
