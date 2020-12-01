@@ -59,28 +59,28 @@ export default class Base extends React.Component {
                           <label className="form-check-label" htmlFor="small">
                             <span>Small</span> (6 slices)
                           </label>
-                          <p className="price-black">from ${ (price.small / 100).toFixed(2) }</p>
+                          <p className="price-black">from ${ (price.small.price / 100).toFixed(2) }</p>
                         </div>
                         <div className="form-check topping-items">
                           <input className="form-check-input" type="radio" name="size" id="medium" value="medium" onChange={() => { this.props.pizzaBase(event.target.value); }} />
                           <label className="form-check-label" htmlFor="medium">
                             <span>Medium</span> (8 slices)
                           </label>
-                          <p className="price-black">from ${ (price.medium / 100).toFixed(2) }</p>
+                          <p className="price-black">from ${ (price.medium.price / 100).toFixed(2) }</p>
                         </div>
                         <div className="form-check topping-items">
                           <input className="form-check-input" type="radio" name="size" id="large" value="large" onChange={() => { this.props.pizzaBase(event.target.value); }}/>
                           <label className="form-check-label" htmlFor="large">
-                            <span>Large</span> (10 slices)
+                            <span>Large</span> (8 slices)
                           </label>
-                          <p className="price-black">from ${ (price.large / 100).toFixed(2) }</p>
+                          <p className="price-black">from ${ (price.large.price / 100).toFixed(2) }</p>
                         </div>
                         <div className="form-check topping-items">
                           <input className="form-check-input" type="radio" name="size" id="extra-large" value="extra-large" onChange={() => { this.props.pizzaBase(event.target.value); }} />
                           <label className="form-check-label" htmlFor="extra-large">
-                            <span>Extra-Large</span> (14 slices)
+                            <span>Extra-Large</span> (10 slices)
                           </label>
-                          <p className="price-black">from ${ (price['extra-large'] / 100).toFixed(2) }</p>
+                          <p className="price-black">from ${ (price['extra-large'].price / 100).toFixed(2) }</p>
                         </div>
                       </div>
                     </div>

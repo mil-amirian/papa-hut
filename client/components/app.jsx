@@ -3,6 +3,7 @@ import Base from './base';
 import Meats from './meats';
 import Veggies from './veggies';
 import Header from './header';
+import FooterTotal from './totalFooter';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -12,10 +13,10 @@ export default class App extends React.Component {
         name: 'base'
       },
       price: {
-        small: 799,
-        medium: 999,
-        large: 1299,
-        'extra-large': 1499,
+        small: { price: 799, slices: 6, calPerSlice: 180 },
+        medium: { price: 999, slices: 8, calPerSlice: 190 },
+        large: { price: 1299, slices: 8, calPerSlice: 270 },
+        'extra-large': { price: 1499, slices: 10, calPerSlice: 280 },
         regular: 0,
         'thin-italian': 150,
         'deep-pan': 250
@@ -55,7 +56,7 @@ export default class App extends React.Component {
       let totalPrice = 0;
       const size = this.state.size;
       const crust = this.state.crust;
-      const sizePrice = this.state.price[size];
+      const sizePrice = this.state.price[size].price;
       const crustPrice = this.state.price[crust];
       totalPrice += (sizePrice + crustPrice);
       for (let i = 0; i < this.state.meats.length; i++) {
@@ -137,6 +138,7 @@ export default class App extends React.Component {
         <>
           <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
           <Base setView={this.setView} renderPizza={this.renderPizza} pizzaBase={this.pizzaBase} pizzaCrust={this.pizzaCrust} basePrice={this.basePrice} />
+          <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} />
         </>
       );
     } else if (this.state.view.name === 'meats') {
