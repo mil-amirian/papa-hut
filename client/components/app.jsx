@@ -146,6 +146,7 @@ export default class App extends React.Component {
         <>
           <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
           <Meats setView={this.setView} renderPizza={this.renderPizza} pizzaMeats={this.pizzaMeats} passMeats={this.passMeats} />
+          <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} />
         </>
       );
     } else if (this.state.view.name === 'veggies') {
@@ -153,6 +154,7 @@ export default class App extends React.Component {
         <>
           <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
           <Veggies setView={this.setView} />
+          <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} />
         </>
       );
     }
