@@ -23,7 +23,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);    
+    background-image: linear-gradient(to right, #f74949 0%, #faa307 100%);    
     box-shadow: 0px 0px 22px 0px rgba(255,255,255,0.69);
     border: solid 4px rgb(255, 183, 83);
     margin-bottom: 1rem;
@@ -179,7 +179,7 @@ position: relative;
     height: 100%;
     /* background-color: #faa307; */
     background-image: linear-gradient(to top, rgba(247, 166, 90, 0.49) 50%, #faa307 100%);
-    backdrop-filter: blur(3px)
+    backdrop-filter: blur(5px)
 
     /* border-bottom-right-radius: 25px; */
 }
@@ -287,6 +287,61 @@ h3 {
 .price-black {
     font-style: italic;
     font-size: 12px;
+}
+
+.choices {
+    display: flex;
+}
+
+.tile-container {
+    border: 3px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.tile-image {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-width: 150px;
+
+}
+
+.title-container {
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 1px solid white;
+}
+
+.title-details {
+    font-family: 'pizza';
+    padding-top: 0.5rem;
+}
+
+.slices-blurb {
+    width: 100%;
+    text-align: center;
+    background-color: grey;
+}
+
+.calories-blurb {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    font-size: 12px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-bottom: 0.5rem;
 }
 
 
