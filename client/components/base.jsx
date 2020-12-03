@@ -1,4 +1,5 @@
 import React from 'react';
+import Tile from './icon-tile';
 
 export default class Base extends React.Component {
   constructor(props) {
@@ -54,6 +55,7 @@ export default class Base extends React.Component {
                     <div className="sizing m-2">
                       <h2 className="form-headers pl-4">1. Choose Your Size</h2>
                       <div className="choices ml-4">
+                        <Tile/>
                         <div className="form-check topping-items">
                           <input className="form-check-input" type="radio" name="size" id="small" value="small" onChange={() => { this.props.pizzaBase(event.target.value); }} />
                           <label className="form-check-label" htmlFor="small">
