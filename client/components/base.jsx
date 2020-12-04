@@ -46,7 +46,7 @@ export default class Base extends React.Component {
       </div>;
 
     const medium =
-      <div className='tile-container m-2' name="size" id="medium" value="medium" onClick={() => { this.props.pizzaBase('medium'); }}>
+      <div className={this.state.currentPizza === 'medium' ? 'tile-container m-2 tile-select' : 'tile-container m-2'} name="size" id="medium" value="medium" onClick={() => { this.props.pizzaBase('medium'); this.updatedPizzaSelected('medium'); }}>
         <div className='image-bkg'>
           <img className='tile-image' src="./images/pizza-medium.png" alt="placeholder" />
         </div>
@@ -58,7 +58,7 @@ export default class Base extends React.Component {
       </div>;
 
     const large =
-      <div className='tile-container m-2' name="size" id="large" value="large" onClick={() => { this.props.pizzaBase('large'); }}>
+      <div className={this.state.currentPizza === 'large' ? 'tile-container m-2 tile-select' : 'tile-container m-2'} name="size" id="large" value="large" onClick={() => { this.props.pizzaBase('large'); this.updatedPizzaSelected('large'); }}>
         <div className='image-bkg'>
           <img className='tile-image' src="./images/pizza-large.png" alt="placeholder" />
         </div>
@@ -70,7 +70,7 @@ export default class Base extends React.Component {
       </div>;
 
     const extraLarge =
-      <div className='tile-container m-2 tile-select' name="size" id="extra-large" value="extra-large" onClick={() => { this.props.pizzaBase('extra-large'); }}>
+      <div className={this.state.currentPizza === 'extra-large' ? 'tile-container m-2 tile-select' : 'tile-container m-2'} name="size" id="extra-large" value="extra-large" onClick={() => { this.props.pizzaBase('extra-large'); this.updatedPizzaSelected('extra-large'); }}>
         <div className='image-bkg'>
           <img className='tile-image' src="./images/pizza-extra-large.png" alt="placeholder" />
         </div>
@@ -81,12 +81,16 @@ export default class Base extends React.Component {
         </div>
       </div>;
     return (
-      <>
-        {small}
-        {medium}
-        {large}
-        {extraLarge}
-      </>
+      <div className='size-container'>
+        <div className='sm-md'>
+          {small}
+          {medium}
+        </div>
+        <div className='lg-xlg'>
+          {large}
+          {extraLarge}
+        </div>
+      </div>
     );
 
   }
@@ -123,7 +127,7 @@ export default class Base extends React.Component {
                   <div className="size pt-4">
                     <div className="sizing m-2">
                       <h2 className="form-headers pl-4">1. Choose Your Size</h2>
-                      <div className="choices ml-4">
+                      <div className="choices">
                         <this.renderTile/>
                         {/* <div className="form-check topping-items">
                           <input className="form-check-input" type="radio" name="size" id="small" value="small" onChange={() => { this.props.pizzaBase(event.target.value); }} />
