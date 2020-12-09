@@ -360,9 +360,16 @@ h3 {
     border-bottom-right-radius: 10px;
 }
 
+.tile-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .title-details {
     /* font-family: 'pizza'; */
-    padding-top: 0.5rem;
+    padding: 0.2rem 0;
     font-size: 18px;
     background-color: grey;
     color: rgb(0, 0, 0);
@@ -390,12 +397,12 @@ h3 {
 
 .tile-select {
     box-shadow: 
-        0 0 10px rgb(255, 128, 0),
-        0 0 6px rgb(255, 221, 0),
-        0 0 7px rgb(213, 255, 1),
-        0 0 8px rgb(204, 255, 0);
+        0 0 6px rgb(191, 255, 30),
+        0 0 7px rgb(228, 255, 92),
+        0 0 8px rgb(231, 255, 133),
+        0 0 10px rgb(255, 255, 255);
     cursor: pointer;
-    border-top: 10px solid rgb(119, 255, 0)
+    border: 1px solid rgb(92, 198, 0)
 }
 
 

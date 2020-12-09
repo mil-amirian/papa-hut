@@ -39,7 +39,9 @@ export default class Base extends React.Component {
           <img className='tile-image' src="./images/pizza-small.png" alt="small" />
         </div>
         <div className='title-container'>
-          <h4 className='title-details' value="small">SMALL</h4>
+          <div className="tile-title">
+            <h4 className='title-details' value="small">SMALL</h4>
+          </div>
           <p className='slices-blurb' value="small">{price.small.slices} <i className="fas fa-pizza-slice fa-lg mr-2"></i></p>
           <p className='calories-blurb' value="small">{price.small.calPerSlice} Calories per slice</p>
         </div>

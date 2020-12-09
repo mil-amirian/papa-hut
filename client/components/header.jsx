@@ -11,19 +11,22 @@ export default class Header extends React.Component {
 
   showPrice() {
     const price = this.props.calculatePizzaPrice();
-    if (price > 0) {
-      return (
-        <span className="top-price">
-          ${(price / 100).toFixed(2)}
-        </span>
-      );
-    } else {
-      return (
-        <span className="top-price">
-          $0.00
-        </span>
-      );
-    }
+    return (
+      <span className="top-price">
+      ${price ? (price / 100).toFixed(2) : '0.00'}
+      </span>
+    );
+    // if (price > 0) {
+    //   return (
+
+    //   );
+    // } else {
+    //   return (
+    //     <span className="top-price">
+    //       $0.00
+    //     </span>
+    //   );
+    // }
 
   }
 
