@@ -11,6 +11,14 @@ export default class Base extends React.Component {
     this.price = this.price.bind(this);
     this.renderTile = this.renderTile.bind(this);
     this.updatedPizzaSelected = this.updatedPizzaSelected.bind(this);
+    this.getPreviousSize = this.getPreviousSize.bind(this);
+  }
+
+  componentDidMount() {
+    const previousSelection = this.getPreviousSize();
+    this.setState({
+      currentPizza: previousSelection
+    });
   }
 
   pizza() {
@@ -28,6 +36,11 @@ export default class Base extends React.Component {
     this.setState({
       currentPizza: val
     });
+  }
+
+  getPreviousSize() {
+    const size = this.props.baseSize();
+    return size;
   }
 
   renderTile() {
