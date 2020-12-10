@@ -36,6 +36,7 @@ export default class App extends React.Component {
     this.basePrice = this.basePrice.bind(this);
     this.calculatePizzaPrice = this.calculatePizzaPrice.bind(this);
     this.baseSize = this.baseSize.bind(this);
+    this.baseCrust = this.baseCrust.bind(this);
   }
 
   basePrice() {
@@ -45,6 +46,12 @@ export default class App extends React.Component {
   baseSize() {
     if (this.state.size) {
       return this.state.size;
+    }
+  }
+
+  baseCrust() {
+    if (this.state.crust) {
+      return this.state.crust;
     }
   }
 
@@ -144,7 +151,7 @@ export default class App extends React.Component {
       return (
         <>
           <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
-          <Base setView={this.setView} renderPizza={this.renderPizza} pizzaBase={this.pizzaBase} pizzaCrust={this.pizzaCrust} basePrice={this.basePrice} baseSize={ this.baseSize}/>
+          <Base setView={this.setView} renderPizza={this.renderPizza} pizzaBase={this.pizzaBase} pizzaCrust={this.pizzaCrust} basePrice={this.basePrice} baseSize={this.baseSize} baseCrust={this.baseCrust}/>
           <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} />
         </>
       );

@@ -5,19 +5,23 @@ export default class Base extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPizza: ''
+      currentPizza: '',
+      currentBase: ''
     };
     this.pizza = this.pizza.bind(this);
     this.price = this.price.bind(this);
     this.renderTile = this.renderTile.bind(this);
     this.updatedPizzaSelected = this.updatedPizzaSelected.bind(this);
     this.getPreviousSize = this.getPreviousSize.bind(this);
+    this.renderBaseTiles = this.renderBaseTiles.bind(this);
   }
 
   componentDidMount() {
-    const previousSelection = this.getPreviousSize();
+    const previousSize = this.getPreviousSize();
+    const previousCrust = this.getPreviousCrust();
     this.setState({
-      currentPizza: previousSelection
+      currentPizza: previousSize,
+      currentBase: previousCrust
     });
   }
 
@@ -38,9 +42,20 @@ export default class Base extends React.Component {
     });
   }
 
+  updatedCrustSelected(crust) {
+    this.setState({
+      currentBase: crust
+    });
+  }
+
   getPreviousSize() {
     const size = this.props.baseSize();
     return size;
+  }
+
+  getPreviousCrust() {
+    const crust = this.props.baseCrust();
+    return crust;
   }
 
   renderTile() {
@@ -107,12 +122,62 @@ export default class Base extends React.Component {
         </div>
       </div>
     );
+  }
 
+  renderBaseTiles() {
+    const price = this.price();
+
+    const thin =
+      <div className={this.state.currentBase === 'thin-italian' ? 'tile-container m-2 tile-select' : 'tile-container m-2'} name="crust" id="thin-italian" value="thin-italian" onClick={() => { this.props.pizzaCrust('thin-italian'); this.updatedCrustSelected('thin-italian'); }}>
+        <div className='image-bkg'>
+          <img className='tile-image' src="./images/italian.png" alt="thin-italian" />
+        </div>
+        <div className='title-container'>
+          <div className="tile-title">
+            <h4 className='title-details' value="thin-italian">ITALIAN</h4>
+          </div>
+          <p className='slices-blurb mb-2' value="thin-italian">+ ${ (price['thin-italian'] / 100).toFixed(2) }</p>
+        </div>
+      </div>;
+
+    const regular =
+    <div className={this.state.currentBase === 'regular' ? 'tile-container m-2 tile-select' : 'tile-container m-2'} name="crust" id="regular" value="regular" onClick={() => { this.props.pizzaCrust('regular'); this.updatedCrustSelected('regular'); }}>
+      <div className='image-bkg'>
+        <img className='tile-image' src="./images/regular.png" alt="regular" />
+      </div>
+      <div className='title-container'>
+        <div className="tile-title">
+          <h4 className='title-details' value="regular">REGULAR</h4>
+        </div>
+        <p className='slices-blurb mb-2' value="regular">Included</p>
+      </div>
+    </div>;
+
+    const deep =
+    <div className={this.state.currentBase === 'deep-pan' ? 'tile-container m-2 tile-select' : 'tile-container m-2'} name="crust" id="deep-pan" value="deep-pan" onClick={() => { this.props.pizzaCrust('deep-pan'); this.updatedCrustSelected('deep-pan'); }}>
+      <div className='image-bkg'>
+        <img className='tile-image' src="./images/deep.png" alt="deep-pan" />
+      </div>
+      <div className='title-container'>
+        <div className="tile-title">
+          <h4 className='title-details' value="deep-pan">DEEP PAN</h4>
+        </div>
+        <p className='slices-blurb mb-2' value="deep-pan">+ ${(price['deep-pan'] / 100).toFixed(2)} </p>
+      </div>
+    </div>;
+
+    return (
+      <div className='size-container'>
+        <div className='sm-md'>
+          {regular}
+          {thin}
+          {deep}
+        </div>
+      </div>
+    );
   }
 
   render() {
-    const price = this.price();
-
     return (
       <div className="outer">
         <div className="app">
@@ -144,60 +209,12 @@ export default class Base extends React.Component {
                       <h2 className="form-headers pl-4">1. Choose Your Size</h2>
                       <div className="choices">
                         <this.renderTile/>
-                        {/* <div className="form-check topping-items">
-                          <input className="form-check-input" type="radio" name="size" id="small" value="small" onChange={() => { this.props.pizzaBase(event.target.value); }} />
-                          <label className="form-check-label" htmlFor="small">
-                            <span>Small</span> (6 slices)
-                          </label>
-                          <p className="price-black">from ${ (price.small.price / 100).toFixed(2) }</p>
-                        </div> */}
-                        {/* <div className="form-check topping-items">
-                          <input className="form-check-input" type="radio" name="size" id="medium" value="medium" onChange={() => { this.props.pizzaBase(event.target.value); }} />
-                          <label className="form-check-label" htmlFor="medium">
-                            <span>Medium</span> (8 slices)
-                          </label>
-                          <p className="price-black">from ${ (price.medium.price / 100).toFixed(2) }</p>
-                        </div>
-                        <div className="form-check topping-items">
-                          <input className="form-check-input" type="radio" name="size" id="large" value="large" onChange={() => { this.props.pizzaBase(event.target.value); }}/>
-                          <label className="form-check-label" htmlFor="large">
-                            <span>Large</span> (8 slices)
-                          </label>
-                          <p className="price-black">from ${ (price.large.price / 100).toFixed(2) }</p>
-                        </div>
-                        <div className="form-check topping-items">
-                          <input className="form-check-input" type="radio" name="size" id="extra-large" value="extra-large" onChange={() => { this.props.pizzaBase(event.target.value); }} />
-                          <label className="form-check-label" htmlFor="extra-large">
-                            <span>Extra-Large</span> (10 slices)
-                          </label>
-                          <p className="price-black">from ${ (price['extra-large'].price / 100).toFixed(2) }</p>
-                        </div> */}
                       </div>
                     </div>
-                    <div className="crust m-2">
-                      <h2 className="form-headers pl-4">2. Choose Your Crust</h2>
-                      <div className="choices ml-4">
-                        <div className="form-check topping-items">
-                          <input className="form-check-input" type="radio" name="crust" id="exampleRadios2" value="regular" onChange={() => { this.props.pizzaCrust(event.target.value); }} />
-                          <label className="form-check-label" htmlFor="regular">
-                            <span>Regular</span>
-                          </label>
-                          <p className="price-black">${ (price.regular / 100).toFixed(2) }</p>
-                        </div>
-                        <div className="form-check topping-items">
-                          <input className="form-check-input" type="radio" name="crust" id="exampleRadios3" value="thin-italian" onChange={() => { this.props.pizzaCrust(event.target.value); }} />
-                          <label className="form-check-label" htmlFor="thin">
-                            <span>Thin Italian</span>
-                          </label>
-                          <p className="price-black">+${ (price['thin-italian'] / 100).toFixed(2) }</p>
-                        </div>
-                        <div className="form-check topping-items">
-                          <input className="form-check-input" type="radio" name="crust" id="exampleRadios3" value="deep-pan" onChange={() => { this.props.pizzaCrust(event.target.value); }}/>
-                          <label className="form-check-label" htmlFor="deep">
-                            <span>Deep Pan</span>
-                          </label>
-                          <p className="price-black">+${ (price['deep-pan'] / 100).toFixed(2) }</p>
-                        </div>
+                    <div className="crust mb-2">
+                      <h2 className="form-headers pl-4 mt-4">2. Choose Your Crust</h2>
+                      <div className="choices mt-2">
+                        <this.renderBaseTiles/>
                       </div>
                     </div>
                   </div>
