@@ -40,9 +40,9 @@ export default class Base extends React.Component {
         </div>
         <div className='title-container'>
           <div className="tile-title">
-            <h4 className='title-details' value="small">SMALL</h4>
+            <h4 className='title-details' value="small">SMALL | <span>{price.small.slices} <i className="fas fa-pizza-slice fa-md mr-2"></i></span></h4>
           </div>
-          <p className='slices-blurb' value="small">{price.small.slices} <i className="fas fa-pizza-slice fa-lg mr-2"></i></p>
+          <p className='slices-blurb' value="small">$7.99</p>
           <p className='calories-blurb' value="small">{price.small.calPerSlice} Calories per slice</p>
         </div>
       </div>;
@@ -53,8 +53,8 @@ export default class Base extends React.Component {
           <img className='tile-image' src="./images/pizza-medium.png" alt="placeholder" />
         </div>
         <div className='title-container'>
-          <h4 className='title-details'>MEDIUM</h4>
-          <p className='slices-blurb'>{price.medium.slices} <i className="fas fa-pizza-slice fa-lg mr-2"></i></p>
+          <h4 className='title-details'>MEDIUM | <span>{price.medium.slices} <i className="fas fa-pizza-slice fa-md mr-2"></i></span></h4>
+          <p className='slices-blurb'>$9.99</p>
           <p className='calories-blurb'>{price.medium.calPerSlice} Calories per slice</p>
         </div>
       </div>;
@@ -65,8 +65,8 @@ export default class Base extends React.Component {
           <img className='tile-image' src="./images/pizza-large.png" alt="placeholder" />
         </div>
         <div className='title-container'>
-          <h4 className='title-details'>LARGE</h4>
-          <p className='slices-blurb'>{price.large.slices} <i className="fas fa-pizza-slice fa-lg mr-2"></i></p>
+          <h4 className='title-details'>LARGE | <span>{price.large.slices} <i className="fas fa-pizza-slice fa-md mr-2"></i></span></h4>
+          <p className='slices-blurb'>$12.99</p>
           <p className='calories-blurb'>{price.large.calPerSlice} Calories per slice</p>
         </div>
       </div>;
@@ -77,8 +77,8 @@ export default class Base extends React.Component {
           <img className='tile-image' src="./images/pizza-extra-large.png" alt="placeholder" />
         </div>
         <div className='title-container'>
-          <h4 className='title-details'>EXTRA LARGE</h4>
-          <p className='slices-blurb'>{price['extra-large'].slices} <i className="fas fa-pizza-slice fa-lg mr-2"></i></p>
+          <h4 className='title-details'>XLARGE | <span>{price['extra-large'].slices} <i className="fas fa-pizza-slice fa-md mr-2"></i></span></h4>
+          <p className='slices-blurb'>$14.99</p>
           <p className='calories-blurb'>{price['extra-large'].calPerSlice} Calories per slice</p>
         </div>
       </div>;
