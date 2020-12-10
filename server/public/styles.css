@@ -47,7 +47,7 @@ body {
     align-items: center;
     background-image: linear-gradient(to right, #f74949 0%, #810202 100%);    backdrop-filter: blur(2px);
     /* box-shadow: 0px 0px 22px 0px rgba(255,255,255,0.69); */
-    border-top: ridge 4px rgb(255, 255, 255);
+    border-top: ridge 3px rgb(255, 255, 255);
     margin-bottom: 1rem;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -326,7 +326,9 @@ h3 {
         0 0 6px rgb(255, 121, 148),
         0 0 7px rgb(255, 180, 41),
         0 0 8px rgb(255, 32, 32);
-    cursor: pointer
+    cursor: pointer;
+    border: 2px solid transparent
+
 }
 
 .tile-container:hover {
@@ -336,7 +338,7 @@ h3 {
 .tile-image {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    max-width: 150px;
+    max-width: 140px;
 }
 
 .image-bkg {
@@ -370,13 +372,13 @@ h3 {
 .title-details {
     /* font-family: 'pizza'; */
     padding: 0.2rem 0;
-    font-size: 18px;
+    font-size: 15px;
     background-color: grey;
     color: rgb(0, 0, 0);
     letter-spacing: 1px;
     text-decoration: capitalize;
     font-weight: 700;
-    width: 100%
+    width: 100%;
 }
 
 .slices-blurb {
@@ -402,7 +404,7 @@ h3 {
         0 0 8px rgb(231, 255, 133),
         0 0 10px rgb(255, 255, 255);
     cursor: pointer;
-    border: 1px solid rgb(92, 198, 0)
+    border: 1.5px solid rgb(92, 198, 0)
 }
 
 
