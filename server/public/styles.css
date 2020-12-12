@@ -10,7 +10,7 @@
   }
 
 body {
-    margin-top: 3rem;
+    margin-top: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,15 +19,17 @@ body {
 
 .header-container {
     width: 100%;
-    height: 100px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-image: linear-gradient(to right, #f74949 0%, #faa307 100%);    
     box-shadow: 0px 0px 22px 0px rgba(255,255,255,0.69);
-    border: solid 4px rgb(255, 183, 83);
+    border-bottom: ridge 4px rgb(255, 255, 255);
     margin-bottom: 1rem;
-    border-radius: 25px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+
 }
 
 .subtotal-container {
@@ -48,7 +50,7 @@ body {
     background-image: linear-gradient(to right, #f74949 0%, #810202 100%);    backdrop-filter: blur(2px);
     /* box-shadow: 0px 0px 22px 0px rgba(255,255,255,0.69); */
     border-top: ridge 3px rgb(255, 255, 255);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
@@ -62,7 +64,7 @@ body {
     color: white;
     padding: 0;
     margin: 0;
-    font-size: 50px;
+    font-size: 40px;
     text-shadow: 
         2px 2px 0px #eb452b, 
         3px 3px 0px #efa032, 
@@ -139,8 +141,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top-left-radius: 25px;
-    /* border-bottom-left-radius: 25px; */
 }
 
 .overlap {
@@ -239,7 +239,6 @@ span {
 
 .veggies {
     background-color: #55a630;
-    border-top-right-radius: 25px;
 }
 
 .meats {
@@ -252,8 +251,8 @@ span {
 }
 
 .shadows {
-    box-shadow: 0px -15px 25px -5px #ff340b, 0px -5px 25px -7px #fff203;
-    border-top: 3px solid rgb(255, 229, 152);
+    /* box-shadow: 0px -2px 5px -5px #bdff94, 0px -5px 25px -7px #ff0000; */
+    /* border-top: 3px solid rgb(255, 25, 25); */
 }
 
 h3 {
@@ -327,12 +326,13 @@ h3 {
         0 0 7px rgb(255, 180, 41),
         0 0 8px rgb(255, 32, 32);
     cursor: pointer;
-    border: 2px solid transparent
-
+    border: 2px solid transparent;
+    transition: 100ms;
 }
 
 .tile-container:hover {
     transform: scale(1.03);
+    transition: 100ms
 }
 
 .tile-image {
