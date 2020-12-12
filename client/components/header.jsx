@@ -32,7 +32,7 @@ export default class Header extends React.Component {
 
   render() {
     return (
-      <div className="header-container">
+      <div className="header-container mb-0">
         <div className='spacer'></div>
         <h1 className='site-title'>PapaHut Pizza</h1>
         <div className="subtotal-container">
