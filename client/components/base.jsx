@@ -203,22 +203,20 @@ export default class Base extends React.Component {
             </div>
             <div className="options">
               <div className="base-opt">
-                <form action="submit">
-                  <div className="size pt-4">
-                    <div className="sizing m-2">
-                      <h2 className="form-headers pl-4">1. Choose Your Size</h2>
-                      <div className="choices">
-                        <this.renderTile/>
-                      </div>
-                    </div>
-                    <div className="crust mb-2">
-                      <h2 className="form-headers pl-4 mt-4">2. Choose Your Crust</h2>
-                      <div className="choices mt-2">
-                        <this.renderBaseTiles/>
-                      </div>
+                <div className="size pt-4">
+                  <div className="sizing m-2">
+                    <h2 className="form-headers pl-4">1. Choose Your Size</h2>
+                    <div className="choices">
+                      <this.renderTile/>
                     </div>
                   </div>
-                </form>
+                  <div className="crust m-2">
+                    <h2 className="form-headers pl-4">2. Choose Your Crust</h2>
+                    <div className="choices mt-2">
+                      <this.renderBaseTiles/>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
