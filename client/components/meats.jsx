@@ -100,6 +100,7 @@ export default class Meats extends React.Component {
                         <div className="form-check topping-items">
                           {this.state.meats.map(meats => {
                             return (
+
                               <div key={meats.toppingId}>
                                 <input className="form-check-input" type="checkbox" name={meats.name} id={meats.toppingId} value={meats.price} onChange={this.handleChange} image={meats.image} checked={meats.checked}/>
                                 <label className="form-check-label meats-options" htmlFor={meats.name}>

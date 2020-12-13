@@ -210,7 +210,7 @@ export default class Base extends React.Component {
                       <this.renderTile/>
                     </div>
                   </div>
-                  <div className="crust m-2">
+                  <div className="crust m-2 mt-3">
                     <h2 className="form-headers pl-4">2. Choose Your Crust</h2>
                     <div className="choices mt-2">
                       <this.renderBaseTiles/>
