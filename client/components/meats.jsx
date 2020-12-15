@@ -107,7 +107,7 @@ export default class Meats extends React.Component {
                         <div className="topping-items">
                           {this.state.meats.map(meats => {
                             return (
-                              <div key={meats.toppingId} className='tile-container m-2' name={meats.name} id={meats.toppingId} value={meats.name} onClick={this.handleChange}>
+                              <div key={meats.toppingId} className='tile-container m-2' name={meats.name} id={meats.toppingId} value={meats.name} onClick={this.handleChange} htmlFor={meats.name}>
                                 <div className='image-bkg'>
                                   <img className='tile-image' src={meats.image} alt={meats.name} />
                                 </div>
