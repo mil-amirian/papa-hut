@@ -9,6 +9,7 @@ export default class Meats extends React.Component {
     this.getMeatToppings = this.getMeatToppings.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.renderPizza = this.renderPizza.bind(this);
+    this.getImagePath = this.getImagePath.bind(this);
   }
 
   handleChange(e) {
@@ -36,6 +37,7 @@ export default class Meats extends React.Component {
         for (let i = 0; i < meats.length; i++) {
           meats[i].checked = false;
         }
+        // console.log(meats);
         this.setState(state => ({
           meats: meats
         }));
@@ -58,6 +60,11 @@ export default class Meats extends React.Component {
         }
       }
       );
+  }
+
+  getImagePath(path) {
+    // console.log(path);
+    return path;
   }
 
   renderPizza() {
@@ -96,18 +103,30 @@ export default class Meats extends React.Component {
                   <div className="size pt-4">
                     <div className="sizing m-2">
                       <h2 className="form-headers pl-4">3. Choose Your Meats</h2>
-                      <div className="choices ml-4">
-                        <div className="form-check topping-items">
+                      <div className="choices ml">
+                        <div className="topping-items">
                           {this.state.meats.map(meats => {
                             return (
+                              <div key={meats.toppingId} className='tile-container m-2' name={meats.name} id={meats.toppingId} value={meats.name} onClick={this.handleChange}>
+                                <div className='image-bkg'>
+                                  <img className='tile-image' src={meats.image} alt={meats.name} />
+                                </div>
+                                <div className='title-container'>
+                                  <div className="tile-title">
+                                    <h4 className='title-details' value="deep-pan">{meats.name}</h4>
+                                  </div>
+                                  <p className='slices-blurb' value="deep-pan">+ ${(meats.price / 100).toFixed(2)} </p>
+                                  <p className='calories-blurb' value={meats.name}>({meats.description})</p>
 
-                              <div key={meats.toppingId}>
-                                <input className="form-check-input" type="checkbox" name={meats.name} id={meats.toppingId} value={meats.price} onChange={this.handleChange} image={meats.image} checked={meats.checked}/>
-                                <label className="form-check-label meats-options" htmlFor={meats.name}>
-                                  <span>{meats.name}</span> ({meats.description})
-                                </label>
-                                <p className="price">+${(meats.price / 100).toFixed(2)}</p>
+                                </div>
                               </div>
+                            /* <div key={meats.toppingId}>
+                                  <input className="form-check-input" type="checkbox" name={meats.name} id={meats.toppingId} value={meats.price} onChange={this.handleChange} image={meats.image} checked={meats.checked}/>
+                                  <label className="form-check-label meats-options" htmlFor={meats.name}>
+                                    <span>{meats.name}</span> ({meats.description})
+                                  </label>
+                                  <p className="price">+${(meats.price / 100).toFixed(2)}</p>
+                                </div> */
                             );
                           })}
                         </div>
