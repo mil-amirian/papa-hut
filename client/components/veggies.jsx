@@ -87,16 +87,30 @@ export default class Veggies extends React.Component {
                   <div className="size pt-4">
                     <div className="sizing m-2">
                       <h2 className="form-headers pl-4">4. Choose Your Veggies</h2>
-                      <div className="choices ml-4">
-                        <div className="form-check topping-items">
+                      <div className="choices">
+                        <div className="topping-items d-flex flex-wrap justify-content-center">
                           {this.state.veggies.map(veggie => {
                             return (
-                              <div key={veggie.toppingId}>
-                                <input className="form-check-input" type="checkbox" name={veggie.name} id={veggie.toppingId} value={veggie.price} onChange={this.handleChange}/>
-                                <label className="form-check-label meats-options" htmlFor={veggie.name}>
-                                  <span>{veggie.name}</span> ({veggie.description})
-                                </label>
+
+                              <div key={veggie.toppingId} className='tile-container-veggie m-2' name={veggie.name} id={veggie.toppingId} value={veggie.name} onClick={this.handleChange} htmlFor={veggie.name}>
+                                <div className='image-bkg'>
+                                  <img className='tile-image' src={veggie.image} alt={veggie.name} />
+                                </div>
+                                <div className='title-container'>
+                                  <div className="tile-title">
+                                    <h4 className='title-details' value="deep-pan">{veggie.name}</h4>
+                                  </div>
+                                  <p className='slices-blurb' value="deep-pan">+ ${(veggie.price / 100).toFixed(2)} </p>
+                                  <p className='calories-blurb' value={veggie.name}>({veggie.description})</p>
+
+                                </div>
                               </div>
+                              // <div key={veggie.toppingId}>
+                              //   <input className="form-check-input" type="checkbox" name={veggie.name} id={veggie.toppingId} value={veggie.price} onChange={this.handleChange}/>
+                              //   <label className="form-check-label meats-options" htmlFor={veggie.name}>
+                              //     <span>{veggie.name}</span> ({veggie.description})
+                              //   </label>
+                              // </div>
                             );
                           })}
                         </div>
