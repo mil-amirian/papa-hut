@@ -109,7 +109,7 @@ export default class Meats extends React.Component {
                             return (
                               <div key={meats.toppingId} className='tile-container-meats m-2' name={meats.name} id={meats.toppingId} value={meats.name} onClick={this.handleChange} htmlFor={meats.name}>
                                 <div className='image-bkg'>
-                                  <img className='tile-image' src={meats.image} alt={meats.name} />
+                                  <img className='tile-image' src={this.getImagePath(meats.image)} alt={meats.name} />
                                 </div>
                                 <div className='title-container'>
                                   <div className="tile-title">

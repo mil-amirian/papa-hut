@@ -361,9 +361,9 @@ h3 {
     align-items: center;
     max-width: 160px;
     box-shadow: 
-        0 0 5px rgb(42, 251, 27),
-        0 0 6px rgb(121, 255, 128),
-        0 0 7px rgb(41, 255, 70),
+        0 0 5px rgb(28, 159, 19),
+        0 0 6px rgb(66, 144, 71),
+        0 0 7px rgb(17, 115, 30),
         0 0 8px rgb(0, 170, 65);
     cursor: pointer;
     border: 2px solid transparent;
