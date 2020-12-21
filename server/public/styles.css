@@ -332,6 +332,7 @@ h3 {
     cursor: pointer;
     border: 2px solid transparent;
     transition: 200ms;
+    background-color: rgb(251, 170, 39);
 }
 
 .tile-container-meats {
@@ -350,6 +351,7 @@ h3 {
     cursor: pointer;
     border: 2px solid transparent;
     transition: 200ms;
+    background-color: rgb(132, 7, 0);
 }
 
 .tile-container-veggie {
@@ -361,16 +363,17 @@ h3 {
     align-items: center;
     max-width: 160px;
     box-shadow: 
-        0 0 5px rgb(28, 159, 19),
-        0 0 6px rgb(66, 144, 71),
-        0 0 7px rgb(17, 115, 30),
-        0 0 8px rgb(0, 170, 65);
+        0 0 5px rgb(15, 88, 10),
+        0 0 6px rgb(46, 98, 49),
+        0 0 7px rgb(11, 74, 19),
+        0 0 8px rgb(0, 86, 33);
     cursor: pointer;
     border: 2px solid transparent;
     transition: 200ms;
+    background-color: rgb(0, 161, 0);
 }
 
-.tile-container:hover {
+.tile-container:hover, .tile-container-meats:hover, .tile-container-veggie:hover {
     transform: scale(1.02);
     /* transition: 200ms */
 }
