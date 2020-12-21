@@ -10,10 +10,11 @@ export default class Meats extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.renderPizza = this.renderPizza.bind(this);
     this.getImagePath = this.getImagePath.bind(this);
+    this.renderPreviousSelections = this.renderPreviousSelections.bind(this);
   }
 
-  handleChange(e) {
-    const topping = this.state.meats.filter(add => add.name === e.target.name);
+  handleChange(name) {
+    const topping = this.state.meats.filter(add => add.name === name);
 
     if (!topping[0].checked) {
       topping[0].checked = true;
@@ -63,14 +64,24 @@ export default class Meats extends React.Component {
   }
 
   getImagePath(path) {
-    // console.log(path);
-    return path;
+    const pathRefined = path.split('.');
+    pathRefined.splice(1, 0, '-select');
+    const newImagePath = `${pathRefined[0]}${pathRefined[1]}.${pathRefined[2]}`;
+    return newImagePath;
   }
 
   renderPizza() {
     return (
       this.props.renderPizza()
     );
+  }
+
+  renderPreviousSelections(checked) {
+    if (checked) {
+      return 'tile-container-meats m-2 tile-select';
+    } else {
+      return 'tile-container-meats m-2';
+    }
   }
 
   render() {
@@ -107,7 +118,15 @@ export default class Meats extends React.Component {
                         <div className="topping-items">
                           {this.state.meats.map(meats => {
                             return (
-                              <div key={meats.toppingId} className='tile-container-meats m-2' name={meats.name} id={meats.toppingId} value={meats.name} onClick={this.handleChange} htmlFor={meats.name}>
+                              <div
+                                key={meats.toppingId}
+                                className={this.renderPreviousSelections(meats.checked)}
+                                name={meats.name}
+                                id={meats.toppingId}
+                                value={meats.name}
+                                onClick={() => { this.handleChange(meats.name); }}
+                                checked={false}
+                              >
                                 <div className='image-bkg'>
                                   <img className='tile-image' src={this.getImagePath(meats.image)} alt={meats.name} />
                                 </div>
