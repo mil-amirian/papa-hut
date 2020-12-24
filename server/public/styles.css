@@ -374,7 +374,7 @@ h3 {
 }
 
 .tile-container:hover, .tile-container-meats:hover, .tile-container-veggie:hover {
-    transform: scale(1.02);
+    transform: scale(1.005);
     /* transition: 200ms */
 }
 

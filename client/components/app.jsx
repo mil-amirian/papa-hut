@@ -32,7 +32,9 @@ export default class App extends React.Component {
     this.pizzaBase = this.pizzaBase.bind(this);
     this.pizzaCrust = this.pizzaCrust.bind(this);
     this.pizzaMeats = this.pizzaMeats.bind(this);
+    this.pizzaVeggies = this.pizzaVeggies.bind(this);
     this.passMeats = this.passMeats.bind(this);
+    this.passVeggies = this.passVeggies.bind(this);
     this.basePrice = this.basePrice.bind(this);
     this.calculatePizzaPrice = this.calculatePizzaPrice.bind(this);
     this.baseSize = this.baseSize.bind(this);
@@ -98,6 +100,14 @@ export default class App extends React.Component {
                 );
               })
             }
+            {
+              this.state.veggies.map(veggie => {
+                const imageName = veggie.image;
+                return (
+                  <img key={veggie.toppingId} src = { imageName } className = "img-responsive" />
+                );
+              })
+            }
           </div>
         </div>
       );
@@ -140,9 +150,29 @@ export default class App extends React.Component {
     }
   }
 
+  pizzaVeggies(veggie, action) {
+    if (action === 'add') {
+      const added = this.state.veggies.concat(veggie);
+      this.setState({
+        veggies: added
+      });
+    } else if (action === 'remove') {
+      const removed = this.state.veggies.filter(remove => remove.name !== veggie.name);
+      this.setState({
+        veggies: removed
+      });
+    }
+  }
+
   passMeats() {
     if (this.state.meats.length > 0) {
       return this.state.meats;
+    }
+  }
+
+  passVeggies() {
+    if (this.state.veggies.length > 0) {
+      return this.state.veggies;
     }
   }
 
@@ -167,7 +197,7 @@ export default class App extends React.Component {
       return (
         <>
           <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
-          <Veggies setView={this.setView} />
+          <Veggies renderPizza={this.renderPizza} setView={this.setView} pizzaVeggies={this.pizzaVeggies} passVeggies={this.passVeggies}/>
           <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} />
         </>
       );

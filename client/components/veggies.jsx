@@ -10,15 +10,22 @@ export default class Veggies extends React.Component {
     this.getVeggieToppings = this.getVeggieToppings.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.renderPizza = this.renderPizza.bind(this);
+    this.renderPreviousSelections = this.renderPreviousSelections.bind(this);
+    this.getImagePath = this.getImagePath.bind(this);
+    this.renderPizza = this.renderPizza.bind(this);
   }
 
-  handleChange(e) {
-    if (e.target.checked) {
-      const added = this.state.checked.concat(e.target.name);
-      this.setState({ checked: added });
+  handleChange(name) {
+    const topping = this.state.veggies.filter(add => add.name === name);
+
+    if (!topping[0].checked) {
+      topping[0].checked = true;
+      const add = topping[0];
+      this.props.pizzaVeggies(add, 'add');
     } else {
-      const removed = this.state.checked.filter(checked => checked !== e.target.name);
-      this.setState({ checked: removed });
+      topping[0].checked = false;
+      const remove = topping[0];
+      this.props.pizzaVeggies(remove, 'remove');
     }
   }
 
@@ -33,35 +40,51 @@ export default class Veggies extends React.Component {
         this.setState(state => ({
           veggies: veggies
         }));
+      })
+      .then(() => {
+        const selectedVeggies = this.props.passVeggies();
+        if (selectedVeggies) {
+          const copy = this.state.veggies.slice();
+          for (let i = 0; i < selectedVeggies.length; i++) {
+            for (let j = 0; j < copy.length; j++) {
+              if (selectedVeggies[i].name === copy[j].name) {
+                copy[j].checked = true;
+              }
+            }
+          }
+          this.setState({
+            veggies: copy
+          });
+        }
       });
+  }
+
+  getImagePath(path) {
+    const pathRefined = path.split('.');
+    pathRefined.splice(1, 0, '-select');
+    const newImagePath = `${pathRefined[0]}${pathRefined[1]}.${pathRefined[2]}`;
+    return newImagePath;
+  }
+
+  renderPreviousSelections(checked) {
+    if (checked) {
+      return 'tile-container-veggie m-2 tile-select';
+    } else {
+      return 'tile-container-veggie m-2';
+    }
   }
 
   renderPizza() {
     return (
-      this.state.checked.map(topping => {
-        let imageName;
-        this.state.veggies.filter(image => {
-          if (image.name === topping) {
-            imageName = image.image;
-          }
-        });
-        return (
-          <img key={this.state.veggies.toppingId} src = { imageName } className = "img-responsive" />
-        );
-      }
-      ));
+      this.props.renderPizza()
+    );
   }
 
   render() {
     return (
       <div className="outer shadow">
         <div className="app">
-          <div className="pizza-viewer">
-            <div className="image-container overlap">
-              <img src="images/pizza-base.png" className="parent-img-responsive" />
-              <this.renderPizza />
-            </div>
-          </div>
+          <this.renderPizza />
           <div className="toppings-section">
             <div className="buttons">
               <div onClick={() => this.props.setView('base', null)} className="base">
@@ -92,9 +115,16 @@ export default class Veggies extends React.Component {
                           {this.state.veggies.map(veggie => {
                             return (
 
-                              <div key={veggie.toppingId} className='tile-container-veggie m-2' name={veggie.name} id={veggie.toppingId} value={veggie.name} onClick={this.handleChange} htmlFor={veggie.name}>
+                              <div
+                                key={veggie.toppingId}
+                                className={this.renderPreviousSelections(veggie.checked)}
+                                name={veggie.name}
+                                id={veggie.toppingId}
+                                value={veggie.name}
+                                onClick={() => { this.handleChange(veggie.name); }}
+                                checked={false}>
                                 <div className='image-bkg'>
-                                  <img className='tile-image' src={veggie.image} alt={veggie.name} />
+                                  <img className='tile-image' src={this.getImagePath(veggie.image)} alt={veggie.name} />
                                 </div>
                                 <div className='title-container'>
                                   <div className="tile-title">
