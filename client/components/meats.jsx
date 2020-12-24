@@ -110,35 +110,34 @@ export default class Meats extends React.Component {
             </div>
             <div className="options">
               <div className="meats-opt">
-                <form action="submit">
-                  <div className="size pt-4">
-                    <div className="sizing m-2">
-                      <h2 className="form-headers pl-4">3. Choose Your Meats</h2>
-                      <div className="choices">
-                        <div className="topping-items">
-                          {this.state.meats.map(meats => {
-                            return (
-                              <div
-                                key={meats.toppingId}
-                                className={this.renderPreviousSelections(meats.checked)}
-                                name={meats.name}
-                                id={meats.toppingId}
-                                value={meats.name}
-                                onClick={() => { this.handleChange(meats.name); }}
-                                checked={false}
-                              >
-                                <div className='image-bkg'>
-                                  <img className='tile-image' src={this.getImagePath(meats.image)} alt={meats.name} />
-                                </div>
-                                <div className='title-container'>
-                                  <div className="tile-title">
-                                    <h4 className='title-details' value="deep-pan">{meats.name}</h4>
-                                  </div>
-                                  <p className='slices-blurb' value="deep-pan">+ ${(meats.price / 100).toFixed(2)} </p>
-                                  <p className='calories-blurb' value={meats.name}>({meats.description})</p>
-
-                                </div>
+                <div className="size pt-4">
+                  <div className="sizing m-2">
+                    <h2 className="form-headers pl-4">3. Choose Your Meats</h2>
+                    <div className="choices">
+                      <div className="topping-items">
+                        {this.state.meats.map(meats => {
+                          return (
+                            <div
+                              key={meats.toppingId}
+                              className={this.renderPreviousSelections(meats.checked)}
+                              name={meats.name}
+                              id={meats.toppingId}
+                              value={meats.name}
+                              onClick={() => { this.handleChange(meats.name); }}
+                              checked={false}
+                            >
+                              <div className='image-bkg'>
+                                <img className='tile-image' src={this.getImagePath(meats.image)} alt={meats.name} />
                               </div>
+                              <div className='title-container'>
+                                <div className="tile-title">
+                                  <h4 className='title-details' value="deep-pan">{meats.name}</h4>
+                                </div>
+                                <p className='slices-blurb' value="deep-pan">+ ${(meats.price / 100).toFixed(2)} </p>
+                                <p className='calories-blurb' value={meats.name}>({meats.description})</p>
+
+                              </div>
+                            </div>
                             /* <div key={meats.toppingId}>
                                   <input className="form-check-input" type="checkbox" name={meats.name} id={meats.toppingId} value={meats.price} onChange={this.handleChange} image={meats.image} checked={meats.checked}/>
                                   <label className="form-check-label meats-options" htmlFor={meats.name}>
@@ -146,13 +145,12 @@ export default class Meats extends React.Component {
                                   </label>
                                   <p className="price">+${(meats.price / 100).toFixed(2)}</p>
                                 </div> */
-                            );
-                          })}
-                        </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
