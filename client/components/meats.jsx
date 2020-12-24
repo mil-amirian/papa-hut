@@ -138,13 +138,6 @@ export default class Meats extends React.Component {
 
                               </div>
                             </div>
-                            /* <div key={meats.toppingId}>
-                                  <input className="form-check-input" type="checkbox" name={meats.name} id={meats.toppingId} value={meats.price} onChange={this.handleChange} image={meats.image} checked={meats.checked}/>
-                                  <label className="form-check-label meats-options" htmlFor={meats.name}>
-                                    <span>{meats.name}</span> ({meats.description})
-                                  </label>
-                                  <p className="price">+${(meats.price / 100).toFixed(2)}</p>
-                                </div> */
                           );
                         })}
                       </div>
