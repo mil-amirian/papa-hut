@@ -39,6 +39,7 @@ export default class App extends React.Component {
     this.calculatePizzaPrice = this.calculatePizzaPrice.bind(this);
     this.baseSize = this.baseSize.bind(this);
     this.baseCrust = this.baseCrust.bind(this);
+    this.calculatePizzaCals = this.calculatePizzaCals.bind(this);
   }
 
   basePrice() {
@@ -83,6 +84,25 @@ export default class App extends React.Component {
         totalPrice += this.state.veggies[i].price;
       }
       return totalPrice;
+    }
+  }
+
+  calculatePizzaCals() {
+    if (this.state.size) {
+      let totalCals = 0;
+      const size = this.state.size;
+      const crust = this.state.crust;
+      const sizeCals = this.state.price[size].calPerSlice * this.state.price[size].slices;
+      const crustPrice = this.state.price[crust];
+      totalCals += (sizeCals + crustPrice);
+      for (let i = 0; i < this.state.meats.length; i++) {
+        totalCals += this.state.meats[i].price;
+      }
+
+      for (let i = 0; i < this.state.veggies.length; i++) {
+        totalCals += this.state.veggies[i].price;
+      }
+      return totalCals;
     }
   }
 
@@ -182,7 +202,7 @@ export default class App extends React.Component {
         <>
           <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
           <Base setView={this.setView} renderPizza={this.renderPizza} pizzaBase={this.pizzaBase} pizzaCrust={this.pizzaCrust} basePrice={this.basePrice} baseSize={this.baseSize} baseCrust={this.baseCrust}/>
-          <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} />
+          <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} calculatePizzaCals={ this.calculatePizzaCals}/>
         </>
       );
     } else if (this.state.view.name === 'meats') {
@@ -190,7 +210,7 @@ export default class App extends React.Component {
         <>
           <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
           <Meats setView={this.setView} renderPizza={this.renderPizza} pizzaMeats={this.pizzaMeats} passMeats={this.passMeats} />
-          <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} />
+          <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} calculatePizzaCals={ this.calculatePizzaCals}/>
         </>
       );
     } else if (this.state.view.name === 'veggies') {
@@ -198,7 +218,7 @@ export default class App extends React.Component {
         <>
           <Header calculatePizzaPrice={ this.calculatePizzaPrice}/>
           <Veggies renderPizza={this.renderPizza} setView={this.setView} pizzaVeggies={this.pizzaVeggies} passVeggies={this.passVeggies}/>
-          <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} />
+          <FooterTotal calculatePizzaPrice={ this.calculatePizzaPrice} calculatePizzaCals={ this.calculatePizzaCals}/>
         </>
       );
     }
