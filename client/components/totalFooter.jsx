@@ -29,10 +29,21 @@ export default class FooterTotal extends React.Component {
   }
 
   showCals() {
-    return (
-      <span className='ml-2'>0 total calories</span>
 
-    );
+    const cals = this.props.calculatePizzaCals();
+    if (cals > 0) {
+      return (
+        <span className="bottom-price">
+          {cals} total calories
+        </span>
+      );
+    } else {
+      return (
+        <span className="bottom-price">
+            0
+        </span>
+      );
+    }
   }
 
   render() {
