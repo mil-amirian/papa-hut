@@ -566,6 +566,26 @@ h3 {
     }
 }
 
+@media (max-width: 770px) {
+
+    .tile-image {
+        display: none;
+    }
+
+    .title-details, .title-container {
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+    }
+
+    .title-details {
+        padding: 5px 10px
+    }
+
+    .tile-container, .tile-container-meats, .tile-container-veggie {
+        width: 180px;
+    }
+}
+
 
 
 @media (max-width: 700px) {
