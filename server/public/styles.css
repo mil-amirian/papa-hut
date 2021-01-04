@@ -573,8 +573,8 @@ h3 {
     }
 
     .title-details, .title-container {
-        border-top-right-radius: 15px;
-        border-top-left-radius: 15px;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
     }
 
     .title-details {
@@ -583,6 +583,15 @@ h3 {
 
     .tile-container, .tile-container-meats, .tile-container-veggie {
         width: 180px;
+        background-color: none;
+    }
+
+    .title-container {
+        background-color: none;
+    }
+
+    .outer {
+        margin: 0;
     }
 }
 
@@ -604,7 +613,7 @@ h3 {
 
     .header-container {
         margin: 0;
-        width: 100vw;
+        width: 90vw;
     }
 
     .spacer {
@@ -620,11 +629,6 @@ h3 {
         font-size: 24px
     }
 
-    .base-opt, .meats-opt, .veggies-opt {
-        margin-bottom: 2rem;
-        height: 100%;
-    }
-
     .subtotal-container {
         font-size: 16px;
         margin-right: 0    
@@ -635,11 +639,11 @@ h3 {
     }
 
     .pizza-viewer {
-        width: 100vw;
+        width: 90vw;
         margin: 0;
     }
     .toppings-section {
-        width: 100vw;
+        width: 90vw;
         height: auto;
     }
 
@@ -649,8 +653,9 @@ h3 {
     }
 
     .base-opt, .meats-opt, .veggies-opt {
-        padding-bottom: 10px;
-        margin-bottom: 2rem;
+        /* padding-bottom: 10px; */
+        margin-bottom: 0;
+        height: 100%
     }
 
     h3 {
