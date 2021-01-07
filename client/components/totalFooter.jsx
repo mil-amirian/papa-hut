@@ -40,7 +40,7 @@ export default class FooterTotal extends React.Component {
     } else {
       return (
         <span className="bottom-price">
-            0
+          0 Calories
         </span>
       );
     }

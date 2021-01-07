@@ -113,7 +113,6 @@ export default class Veggies extends React.Component {
                       <div className="topping-items d-flex flex-wrap justify-content-center">
                         {this.state.veggies.map(veggie => {
                           return (
-
                             <div
                               key={veggie.toppingId}
                               className={this.renderPreviousSelections(veggie.checked)}

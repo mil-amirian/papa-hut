@@ -644,12 +644,16 @@ h3 {
     }
     .toppings-section {
         width: 90vw;
-        height: auto;
+        height: 100%;
     }
 
     .topping-items {
         display: flex;
         flex-direction: column;
+    }
+
+    .size {
+        height: 100%;
     }
 
     .base-opt, .meats-opt, .veggies-opt {
@@ -664,8 +668,5 @@ h3 {
 
     h2 {
         font-size: 24px;
-    }
-
-    .pizza-viewer {
     }
 }
