@@ -112,11 +112,11 @@ export default class Base extends React.Component {
       </div>;
     return (
       <div className='size-container'>
-        <div className='sm-md'>
+        <div className='sm-md d-flex justify-content-center'>
           {small}
           {medium}
         </div>
-        <div className='lg-xlg'>
+        <div className='lg-xlg d-flex justify-content-center'>
           {large}
           {extraLarge}
         </div>
@@ -168,7 +168,7 @@ export default class Base extends React.Component {
 
     return (
       <div className='size-container'>
-        <div className='sm-md'>
+        <div className='sm-md d-flex justify-content-center'>
           {regular}
           {thin}
           {deep}
